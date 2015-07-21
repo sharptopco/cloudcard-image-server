@@ -5,9 +5,13 @@ import com.cloudcardtools.bbts.UserRole
 class BootStrap {
 
     def init = { servletContext ->
-        def userRole = Role.findByAuthority("ROLE_USER") ?: new Role(authority: "ROLE_USER").save(flush: true)
-        def user = User.findByUsername("tst") ?: new User(username: "tst", password: "foo", enabled: true).save(flush: true)
-        UserRole.create(user, userRole, true)
+        if (!User.count()) {
+            def readerRole = Role.findByAuthority(Role.READER) ?: new Role(authority: Role.READER).save(flush: true)
+            def writerRole = Role.findByAuthority(Role.WRITER) ?: new Role(authority: Role.WRITER).save(flush: true)
+            def user = new User(username: "test", password: ".", enabled: true).save(flush: true)
+            UserRole.create(user, readerRole, true)
+            UserRole.create(user, writerRole, true)
+        }
     }
     def destroy = {
     }

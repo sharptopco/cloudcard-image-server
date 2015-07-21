@@ -19,4 +19,9 @@ class CustomerPhoto {
         photo sqlType: 'blob'
         version false
     }
+
+    static findByImageKey(String key) {
+        Long custId = ImageKey.findByKey(key)?.custId
+        CustomerPhoto.findByCustId(custId)
+    }
 }

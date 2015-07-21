@@ -2,13 +2,16 @@ package com.cloudcardtools.bbts
 
 class Role {
 
-	String authority
+    static final String READER = "ROLE_READER"
+    static final String WRITER = "ROLE_WRITER"
 
-	static mapping = {
-		cache true
-	}
+    String authority
 
-	static constraints = {
-		authority blank: false, unique: true
-	}
+    static mapping = {
+        cache true
+    }
+
+    static constraints = {
+        authority blank: false, unique: true
+    }
 }
