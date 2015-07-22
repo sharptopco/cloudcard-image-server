@@ -32,7 +32,7 @@ class CustomerPhotoController {
         }
 
         new CustomerPhoto(custId: custId, photo: request.JSON.photo).save(failOnError: true, flush: true)
-        response.addHeader("Location:", createLink(controller: "customerPhotos", action: custId))
+        response.addHeader("Location", createLink(controller: "customerPhotos", action: custId))
 
         render "${CREATED.value()} ${CREATED.name()}", status: CREATED
     }
