@@ -4,6 +4,7 @@ class Role {
 
     static final String READER = "ROLE_READER"
     static final String WRITER = "ROLE_WRITER"
+    static final String ADMIN = "ROLE_ADMIN"
 
     String authority
 

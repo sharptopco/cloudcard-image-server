@@ -8,9 +8,11 @@ class BootStrap {
         if (!User.count()) {
             def readerRole = Role.findByAuthority(Role.READER) ?: new Role(authority: Role.READER).save(flush: true)
             def writerRole = Role.findByAuthority(Role.WRITER) ?: new Role(authority: Role.WRITER).save(flush: true)
+            def adminRole = Role.findByAuthority(Role.ADMIN) ?: new Role(authority: Role.ADMIN).save(flush: true)
             def user = new User(username: "test", password: ".", enabled: true).save(flush: true)
             UserRole.create(user, readerRole, true)
             UserRole.create(user, writerRole, true)
+            UserRole.create(user, adminRole, true)
         }
     }
     def destroy = {
