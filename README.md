@@ -33,10 +33,38 @@ CloudCard Image Server is a Grails web application, which runs on the Java Virtu
 6. Change into the project directory: `cd cloudcard-image-server`.
 7. Build the WAR file: `grails war`
 8. Follow your normal procedures for deploying the WAR file to your Tomcat server(s).  If you use multiple nodes, sticky sessions must be enabled.
+9. In the home directory of the account that runs Tomcat, add a directory called `.grails`.
+10. In the `.grails` directory that you just created, add the configuration file `cloudcard-image-server-config.properties`.
+11. Follow the configuration steps below.
 
 ##### Running with the embedded Tomcat Container
 6. Change into the project directory: `cd cloudcard-image-server`.
 7. Start the application: `grails run-war`.
+8. In the home directory of the account that runs Grails, add a directory called `.grails`.
+9. In the `.grails` directory that you just created, add the configuration file `cloudcard-image-server-config.properties`.
+10. Follow the configuration steps below.
 
 ##### Configuration:
-Comming Soon
+- Configuration should be in the file `~/.grails/cloudcard-image-server-config.properties`.
+- Example file:
+
+```
+# bbts datasource properties
+dataSource_bbts.pooled=true
+dataSource_bbts.dbCreate=validate
+dataSource_bbts.driverClassName=oracle.jdbc.OracleDriver
+dataSource_bbts.url=jdbc:oracle:thin:@{database url or IP address}:{port number - probably 1521}/{SID - probably BBTS}
+dataSource_bbts.username={database username}
+dataSource_bbts.password={database password}
+dataSource_bbts.properties.maxActive=-1
+dataSource_bbts.properties.minEvictableIdleTimeMillis=1800000
+dataSource_bbts.properties.timeBetweenEvictionRunsMillis=1800000
+dataSource_bbts.properties.numTestsPerEvictionRun=3
+dataSource_bbts.properties.testOnBorrow=true
+dataSource_bbts.properties.testWhileIdle=true
+dataSource_bbts.properties.testOnReturn=true
+dataSource_bbts.properties.validationQuery=SELECT 1 FROM DUAL
+
+#allows images to be used in external webpages
+imageServer.enabled=true
+```
