@@ -68,3 +68,4 @@ dataSource_bbts.properties.validationQuery=SELECT 1 FROM DUAL
 #allows images to be used in external webpages
 imageServer.enabled=true
 ```
+As with any application, it is always advisable to create a new database service account and to limit the priviledges of that account to the minimum access necessary to perform the desired tasks.  The service account for CloudCard Image Server only needs `SELECT` access to the `ENVISION.CUSTOMER` table and `SELECT, INSERT, UPDATE` access to the `ENVISION.CUSTOMER_PHOTO` table.
