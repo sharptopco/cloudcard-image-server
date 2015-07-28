@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<div id="grailsLogo" role="banner"><a href="/cloud-card-bbts-api/">
+<div id="grailsLogo" role="banner"><a href="/cloudcard-image-server/">
     <asset:image src="cloudcard-logo-small.png" alt="Cloud Card"/>
 </a>
 </div>

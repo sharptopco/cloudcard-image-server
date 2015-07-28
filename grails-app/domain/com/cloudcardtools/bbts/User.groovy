@@ -46,6 +46,10 @@ class User {
         UserRole.findAllByUser(this).collect { it.role }
     }
 
+    boolean hasRole(String role) {
+        id && (getAuthorities().findAll { it.authority == role } as boolean)
+    }
+
     def beforeInsert() {
         encodePassword()
     }
@@ -54,6 +58,10 @@ class User {
         if (isDirty('password')) {
             encodePassword()
         }
+    }
+
+    String getRolesAsString() {
+        authorities.collect { (it.authority - 'ROLE_').toLowerCase().capitalize() }.sort().join(", ")
     }
 
     protected void encodePassword() {
