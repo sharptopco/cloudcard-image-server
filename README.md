@@ -37,7 +37,7 @@ CloudCard Image Server is a Grails web application, which runs on the Java Virtu
 10. In the `.grails` directory that you just created, add the configuration file `cloudcard-image-server-config.properties`.
 11. Follow the configuration steps below.
 
-##### Running with the embedded Tomcat Container
+##### Running with Grails (using the embedded Tomcat Container)
 6. Change into the project directory: `cd cloudcard-image-server`.
 7. Start the application: `grails run-war`.
 8. In the home directory of the account that runs Grails, add a directory called `.grails`.
