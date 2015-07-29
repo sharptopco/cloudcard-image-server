@@ -71,7 +71,7 @@ imageServer.enabled=true
 As with any application, it is always advisable to create a new database service account and to limit the priviledges of that account to the minimum access necessary to perform the desired tasks.  The service account for CloudCard Image Server only needs `SELECT` access to the `ENVISION.CUSTOMER` table and `SELECT, INSERT, UPDATE` access to the `ENVISION.CUSTOMER_PHOTO` table.
 
 ### Logging In and Creating Users
-1. The first time you run CloudCard Image Server log in with the following credentials username `test` password `.`
+1. The first time you run CloudCard Image Server log in with the username `test` and the password `.`
 2. Immediately, create a new user with read, write, and admin roles.
 3. Delete the test account.
 
