@@ -26,8 +26,10 @@ CloudCard Image Server is a Grails web application, which runs on the Java Virtu
 1. Make sure Java is installed and accessible via the command line. You can do this by typing `java -version`. If you get an error, [install Java](http://docs.oracle.com/javase/7/docs/webnotes/install/).
 2. [Install Grails 2.4.4](https://grails.org/download.html). NOTE: Do not install the most recent version of Grails.  Your Grails version must match the version with which the application was built, so you must install Grails 2.4.4.  The easiest way to do this is to first [install GVM](http://gvmtool.net/) and the run `gvm install grails 2.4.4`.
 3. You should be able to type `grails --version` and see exactly this output: `Grails version: 2.4.4`.  Do not continue until you have the correct version of Grails running at the command line.
-4. Change directories to the directory into which you would like to put CloudCard Image Server.  You don't need to create a subdirectory for it.  It will create a directory called `cloudcard-image-server` when you clone it.
-5. Clone this project. `git clone https://github.com/sharptopco/cloudcard-image-server.git`.
+4. Install Git
+5. Change directories to the directory into which you would like to put CloudCard Image Server.  You don't need to create a subdirectory for it.  It will create a directory called `cloudcard-image-server` when you clone it.
+6. Clone this project. `git clone https://github.com/sharptopco/cloudcard-image-server.git`.
+7. Copy Oracle JAR into the project's lib directory.
 
 ##### Building a WAR file to deploy to Tomcat 7
 6. Change into the project directory: `cd cloudcard-image-server`.
