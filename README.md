@@ -98,5 +98,6 @@ You should always create new service accounts with different usernames and passw
 
 ### Getting Help With Installation and Hosting
 The CloudCardTools team is happy to help in any way we can.  Just contact us at [info@sharptop.co](mailto:info@sharptop.co) for more information.
-- Installation Support is only $500 and provides up to 4 hours of support.  Additional support hours are available for $75 per hour, but they are rarely necessary.
-- Hosting is available for $100 per month plus setup costs.
+- Installation Support is $750. 
+- Additional support hours are available for $125 per hour, but they are rarely necessary.
+- Hosting is available for $125 per month plus setup costs.
