@@ -134,3 +134,23 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 grails.plugin.springsecurity.useBasicAuth = true
 grails.plugin.springsecurity.basic.realmName = "Cloud Card BbTS API"
+
+
+String environmentConfig = ""
+String OS_ENV_PREFIX = "APPSETTING_cloudcard_"
+System.getenv().each {
+    String key = it.key
+    if (key.startsWith(OS_ENV_PREFIX)) {
+        key = key - OS_ENV_PREFIX
+        key = key.replace("_", ".")
+        if (it.value == "false" || it.value == "true" || it.value.isNumber()) {
+            environmentConfig += "${key - ENV_PREFIX}=$it.value\n"
+        } else {
+            environmentConfig += "$key='$it.value'\n"
+        }
+    }
+}
+
+Class EnvironmentConfigs = new GroovyClassLoader().parseClass(environmentConfig)
+
+grails.config.locations << EnvironmentConfigs
