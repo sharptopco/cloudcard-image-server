@@ -137,6 +137,19 @@ grails.plugin.springsecurity.basic.realmName = "Cloud Card BbTS API"
 
 
 String environmentConfig = ""
+
+String ENV_PREFIX = "cloudcard."
+System.getProperties().each {
+    String key = it.key
+    if (key.startsWith(ENV_PREFIX)) {
+        if (it.value == "false" || it.value == "true" || it.value.isNumber()) {
+            environmentConfig += "${key - ENV_PREFIX}=$it.value\n"
+        } else {
+            environmentConfig += "${key - ENV_PREFIX}='$it.value'\n"
+        }
+    }
+}
+
 String OS_ENV_PREFIX = "APPSETTING_cloudcard_"
 System.getenv().each {
     String key = it.key
