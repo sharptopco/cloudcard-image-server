@@ -62,6 +62,10 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.8'
         compile ":asset-pipeline:1.9.9"
 
+        compile ":rest-client-builder:2.1.1"
+        compile ":quartz:1.0.2"
+        runtime ":rest:0.8" //for http-builder
+
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"
@@ -75,3 +79,5 @@ grails.project.dependency.resolution = {
         //compile ":handlebars-asset-pipeline:1.3.0.3"
     }
 }
+
+grails.server.port.http = 8081

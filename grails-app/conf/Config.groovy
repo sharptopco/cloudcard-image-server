@@ -134,3 +134,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 grails.plugin.springsecurity.useBasicAuth = true
 grails.plugin.springsecurity.basic.realmName = "Cloud Card BbTS API"
+
+
+cloudcard {
+    apiURL = "http://localhost:8080"
+    accessToken = "52u7240eaaa4o0q3lpg6bb3it1ts4m8h"
+}
