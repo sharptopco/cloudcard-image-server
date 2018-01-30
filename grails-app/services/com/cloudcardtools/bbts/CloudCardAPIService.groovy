@@ -13,8 +13,13 @@ class CloudCardAPIService {
 
     GrailsApplication grailsApplication
     RestBuilder restBuilder = new RestBuilder()
-    String apiURL = grailsApplication.config.cloudcard.apiURL
-    String accessToken = grailsApplication.config.cloudcard.accessToken
+
+    String getApiURL() {
+        grailsApplication.config.cloudcard.apiURL
+    }
+    String getAccessToken() {
+        grailsApplication.config.cloudcard.accessToken
+    }
 
     String getDescription() {
         "CloudCard API ($apiURL) using Access Token [$accessToken]"
