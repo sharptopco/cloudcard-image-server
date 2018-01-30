@@ -103,6 +103,8 @@ log4j.main = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+    info 'grails.app'        // controllers
+
     error 'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP
             'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -134,6 +136,12 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 grails.plugin.springsecurity.useBasicAuth = true
 grails.plugin.springsecurity.basic.realmName = "Cloud Card BbTS API"
+
+
+cloudcard {
+    apiURL = "http://localhost:8080"
+    accessToken = "4l9eu18qalhk0s782cl8i98dcuf4mmjg"
+}
 
 
 String environmentConfig = ""
