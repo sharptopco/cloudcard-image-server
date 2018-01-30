@@ -29,4 +29,8 @@ class ImageKey {
         custId blank: false
         key blank: false
     }
+
+    static mapping = {
+        key column: '`key`'
+    }
 }

@@ -32,6 +32,7 @@ class CustomerPhotoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Transactional
     @Secured("ROLE_READER")
     def show(CustomerPhoto customerPhotoInstance) {
         if (!customerPhotoInstance) {
