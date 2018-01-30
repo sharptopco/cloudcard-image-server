@@ -11,6 +11,8 @@ import org.codehaus.groovy.grails.commons.GrailsApplication
 @Transactional
 class CloudCardAPIService {
 
+    static final String READY_FOR_DOWNLOAD = "READY_FOR_DOWNLOAD"
+
     GrailsApplication grailsApplication
     RestBuilder restBuilder = new RestBuilder()
 
@@ -25,13 +27,13 @@ class CloudCardAPIService {
         "CloudCard API ($apiURL) using Access Token [$accessToken]"
     }
 
-    List fetchApprovedPhotos() {
-        RestResponse response = restBuilder.get("$apiURL/api/photos?status=APPROVED") {
+    List fetchPhotosReadyForDownload() {
+        RestResponse response = restBuilder.get("$apiURL/api/photos?status=$READY_FOR_DOWNLOAD") {
             header "X-Auth-Token", grailsApplication.config.cloudcard.accessToken
         }
 
         if (response.status != 200) {
-            throw new Exception("Error polling for approved images: $response.text")
+            throw new Exception("Error polling for downloadable images: $response.text")
         }
 
         return response.json
