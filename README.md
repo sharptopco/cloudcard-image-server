@@ -1,15 +1,9 @@
 # CloudCard Image Server
 
-CloudCard Image Server provides an API for accessing a Blackboard Transact (BbTS) database.
+CloudCard Image Server is a simple application that pulls images from CloudCard into a Blackboard Transact (BbTS) database.
 
 ### Description
-CloudCard Image Server was originally developed to allow schools using [CloudCard Photo Submit](http://start.cloudcardtools.com) to import their cardholders' photos directly into their BbTS database. This saves the card office time and money and helps them provide faster service to their cardholders.
-
-One of the added benefits of putting an CloudCard Image Server on top of the BbTS database was that it allowed applications other than CloudCard to access cardholder photos. We add super long, random, secure keys to each photo to allow photos to be used in websites while preventing mass image scraping by internet bots. 
-
-### Features
-- Provides secure access your cardholders' ID card images, so that you can display them in web pages and apps.
-- Allows [CloudCard Photo Submit](http://start.cloudcardtools.com) to import images into your BbTS DB
+CloudCard Image Server allows schools using [CloudCard Online Photo Submission](http://onlinephotosubmission.com) to import their cardholders' photos directly into their BbTS database. This saves the card office time and money and helps them provide faster service to their cardholders.
 
 ### Deployment
 CloudCard Image Server is a Grails web application, which runs on the Java Virtual Machine (JVM), and it can be deployed either as a WAR file running in a Tomcat application server or using the embedded Tomcat container that runs with the Grails framework.
@@ -51,6 +45,10 @@ CloudCard Image Server is a Grails web application, which runs on the Java Virtu
 - Example file:
 
 ```
+# CloudCard OnlinePhotoSubmission api connection
+cloudcard.apiURL=https://api.cloudcardtools.com/
+cloudcard.accessToken={accessToken}
+
 # bbts datasource properties
 dataSource_bbts.pooled=true
 dataSource_bbts.dbCreate=validate
@@ -66,34 +64,16 @@ dataSource_bbts.properties.testOnBorrow=true
 dataSource_bbts.properties.testWhileIdle=true
 dataSource_bbts.properties.testOnReturn=true
 dataSource_bbts.properties.validationQuery=SELECT 1 FROM DUAL
-
-#allows images to be used in external webpages
-imageServer.enabled=true
 ```
+
+You can also configure all the above properties through JVM System Properties by prefix each property with `cloudcard.`. For example: `cloudcard.dataSource_bbts.pooled=true`. In AWS Elastic Beanstalk you can configure the system properties for the JVM in the web interface.
+
+To get the CloudCard API AccessToken, run the shell script `./get_token.sh`, and follow the prompts.
+
 As with any application, it is always advisable to create a new database service account and to limit the priviledges of that account to the minimum access necessary to perform the desired tasks.  The service account for CloudCard Image Server only needs `SELECT` access to the `ENVISION.CUSTOMER` table and `SELECT, INSERT, UPDATE` access to the `ENVISION.CUSTOMER_PHOTO` table.
 
-### Logging In and Creating Users
-1. The first time you run CloudCard Image Server log in with the username `test` and the password `.`
-2. Immediately, create a new user with read, write, and admin roles.
-3. Delete the test account.
-
-##### Service Accounts
-The "users" that you create should be service accounts for use by other applications.  CloudCard Image Server is designed to be used primarily by other applications - not by users directly.  The UI and especially the authentication (Basic Auth) are not appropriate for direct user interface.  The only human users you should create are Admin users who will create service accounts.
-
-You should always create new service accounts with different usernames and password for any application that you wish to connect to CloudCard Image Server.
-
-##### Roles
-- **READ:** Readers can lookup CustomerPhotos by `CUSTNUM` (Student ID) or `CUST_ID`.
-- **WRITE:** Writers can save photos to the `CUSTOMER_PHOTO` table.
-- **ADMIN:** Admins can create, modify, and delete service accounts.
-
-### Consuming the CloudCard Image Server API to Display Photos in Web Pages and Applications
-1. Create a service account for the Web / App Server.
-2. On the server, make an request to CloudCard Image Server to get the image key. The API URL is `https://{hostname}[:port number]/cloudcard-image-server/customerPhotos/{custnum or cust_id}`. Authenticate the request via Basic Auth using the credentials you created in step 1. This will return a JSON object that contains the image key. **IMPORTANT NOTE:** To protect your service account credentials, you should always use SSL (HTTPS) and never make this request from client-side JavaScript.
-3. In the web page, add an image tag that points to `http[s]://{hostname}[:port number]/cloudcard-image-server/images/{image key}`. For example, `<img src='http://localhost:8080/cloudcard-image-server/images/JgDRo34NVcliOLgLCWIb58bnP1Frg8w9' alt='Student ID Photo'>`
-
 ### Saving Photos to BbTS
-1. Sign up for [CloudCard Photo Submit](http://start.cloudcardtools.com) Premium.
+1. Sign up for [CloudCard Online Photo Submission](http://onlinephotosubmission.com) Enterprise.
 2. During the setup process, CloudCard staff will configure Photo Submit to download directly to you Blackboard database via CloudCard Image Server.
 
 ### Getting Help With Installation and Hosting
