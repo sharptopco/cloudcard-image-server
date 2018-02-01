@@ -71,13 +71,3 @@ You can also configure all the above properties through JVM System Properties by
 To get the CloudCard API AccessToken, run the shell script `./get_token.sh`, and follow the prompts.
 
 As with any application, it is always advisable to create a new database service account and to limit the priviledges of that account to the minimum access necessary to perform the desired tasks.  The service account for CloudCard Image Server only needs `SELECT` access to the `ENVISION.CUSTOMER` table and `SELECT, INSERT, UPDATE` access to the `ENVISION.CUSTOMER_PHOTO` table.
-
-### Saving Photos to BbTS
-1. Sign up for [CloudCard Online Photo Submission](http://onlinephotosubmission.com) Enterprise.
-2. During the setup process, CloudCard staff will configure Photo Submit to download directly to you Blackboard database via CloudCard Image Server.
-
-### Getting Help With Installation and Hosting
-The CloudCardTools team is happy to help in any way we can.  Just contact us at [info@sharptop.co](mailto:info@sharptop.co) for more information.
-- Installation Support is $750. 
-- Additional support hours are available for $125 per hour, but they are rarely necessary.
-- Hosting is available for $125 per month plus setup costs.
