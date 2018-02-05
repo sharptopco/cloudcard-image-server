@@ -130,48 +130,8 @@
     <h1>Welcome to CloudCard Image Server</h1>
     <g:set var="url" value="${request.serverName}:${request.serverPort}${request.forwardURI}"/>
     <div id="controller-list" role="navigation">
-        <h2>To Save Images To BbTS DB:</h2>
-        <ol>
-            <li><g:link controller="user">Configure a service account.</g:link></li>
-            <li>
-                POST images to ${url}customerPhotos
-                <ol>
-                    <li>Include Basic Auth Header</li>
-                    <li>Request Body: { "id" : "{CustNum}", "photo" : [{array of binary picture data}] }</li>
-                    <li>Example Body: { "id" : "1234567890", "photo" : [1,3,6,-2,6,7,...] }</li>
-                </ol>
-            </li>
-            <li>Image Server will respond
-                <ol>
-                    <li>HTTP Status 201 CREATED means the request was successful.</li>
-                    <li>HTTP Status 404 NOT_FOUND means no customer could be found for that CustNum.</li>
-                </ol>
-            </li>
-        </ol>
-
-        <h2>To Display BbTS Images in Web Pages:</h2>
-        <ol>
-            <li><g:link controller="user">Configure a service account.</g:link></li>
-            <li>
-                From you application server send a GET request to /customerPhotos/{CustNum}<br/>
-                (i.e. GET ${url}customerPhotos/1234567890 )
-                <ol>
-                    <li>Include Basic Auth Header</li>
-                </ol>
-            </li>
-            <li>Image Server will respond
-                <ol>
-                    <li>HTTP Status 200 OK means the request was successful.</li>
-                    <li>HTTP Status 404 NOT_FOUND means no customer could be found for that CustNum.</li>
-                    <li>Response Body: {"custId":11,"key":"h9jhwlf9YZIowzJYY6rlXm0fkP3FoMtl","photo": [...]}</li>
-                </ol>
-            </li>
-            <li>The "key" attribute from the response can be used to load images from web pages.<br/>
-                Example: &lt;img src="${url}images/h9jhwlf9YZIowzJYY6rlXm0fkP3FoMtl" /&gt;
-            </li>
-
-        </ol>
-
+        The CloudCard Image Server enables downloading photos from CloudCard Online Photo Submission into your BbTS database.
+        Consult <a href="https://github.com/sharptopco/cloudcard-image-server/blob/master/README.md">our documentation</a> for more information.
     </div>
 </div>
 </body>
