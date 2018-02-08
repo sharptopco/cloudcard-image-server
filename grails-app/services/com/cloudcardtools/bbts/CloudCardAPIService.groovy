@@ -29,7 +29,7 @@ class CloudCardAPIService {
 
     List fetchPhotosReadyForDownload() {
         RestResponse response = restBuilder.get("$apiURL/api/photos?status=$READY_FOR_DOWNLOAD") {
-            header "X-Auth-Token", grailsApplication.config.cloudcard.accessToken
+            header "X-Auth-Token", accessToken
         }
 
         if (response.status != 200) {
@@ -40,7 +40,7 @@ class CloudCardAPIService {
     }
 
     byte[] fetchPhotoBytes(String publicKey) {
-        RestResponse response = restBuilder.get("$grailsApplication.config.cloudcard.apiURL/api/photos/$publicKey/bytes") {
+        RestResponse response = restBuilder.get("$apiURL/api/photos/$publicKey/bytes") {
             accept "image/jpeg"
         }
 
