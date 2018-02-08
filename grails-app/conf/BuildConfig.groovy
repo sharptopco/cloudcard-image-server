@@ -62,9 +62,7 @@ grails.project.dependency.resolution = {
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1"
 
-        //TODO: I don't think we need jquery...
-        runtime ":jquery:1.11.1"
-
+        runtime ":rest:0.8" //for http-builder
     }
 }
 

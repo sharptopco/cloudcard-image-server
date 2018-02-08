@@ -4,9 +4,13 @@ import grails.transaction.Transactional
 
 import org.codehaus.groovy.grails.commons.GrailsApplication
 
-    import grails.converters.JSON
-    import grails.plugins.rest.client.RestBuilder
-    import grails.plugins.rest.client.RestResponse
+import grails.converters.JSON
+import grails.plugins.rest.client.RestBuilder
+import grails.plugins.rest.client.RestResponse
+
+import groovyx.net.http.ContentType
+import groovyx.net.http.HTTPBuilder
+import groovyx.net.http.Method
 
 @Transactional
 class CloudCardAPIService {
@@ -40,15 +44,11 @@ class CloudCardAPIService {
     }
 
     byte[] fetchPhotoBytes(String publicKey) {
-        RestResponse response = restBuilder.get("$apiURL/api/photos/$publicKey/bytes") {
-            accept "image/jpeg"
-        }
-
-        if (response.status != 200) {
-            throw new Exception("Error retrieving bytes for image with public key [$publicKey]: $response.text")
-        }
-
-        return response.body
+         new HTTPBuilder("$apiURL/api/photos/$publicKey/bytes").request(Method.GET) {
+             response.success = { resp, binary ->
+                 return binary.bytes
+             }
+         }
     }
 
     void markPhotoAsDownloaded(Long id) {
