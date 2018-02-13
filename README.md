@@ -23,7 +23,7 @@ CloudCard Image Server is a Grails web application, which runs on the Java Virtu
 4. Install Git
 5. Change directories to the directory into which you would like to put CloudCard Image Server.  You don't need to create a subdirectory for it.  It will create a directory called `cloudcard-image-server` when you clone it.
 6. Clone this project. `git clone https://github.com/sharptopco/cloudcard-image-server.git`.
-7. Copy Oracle JAR into the project's lib directory.
+7. Copy [Oracle JAR](http://www.oracle.com/technetwork/apps-tech/jdbc-112010-090769.html) into the project's lib directory.
 
 ##### Building a WAR file to deploy to Tomcat 7
 6. Change into the project directory: `cd cloudcard-image-server`.
