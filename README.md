@@ -71,3 +71,6 @@ You can also configure all the above properties through JVM System Properties by
 To get the CloudCard API AccessToken, run the shell script `./get_token.sh`, and follow the prompts.
 
 As with any application, it is always advisable to create a new database service account and to limit the priviledges of that account to the minimum access necessary to perform the desired tasks.  The service account for CloudCard Image Server only needs `SELECT` access to the `ENVISION.CUSTOMER` table and `SELECT, INSERT, UPDATE` access to the `ENVISION.CUSTOMER_PHOTO` table.
+
+##### Polling
+You can temporarily stop the server from pinging the CloudCard API by setting the `imageserver.pollingEnabled` config value to `false`. It defaults to true. This can be useful if you are wanting to prevent errors while interrupting service on your BbTS database.

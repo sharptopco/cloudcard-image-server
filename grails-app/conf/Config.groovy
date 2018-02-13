@@ -143,6 +143,9 @@ cloudcard {
     accessToken = "4l9eu18qalhk0s782cl8i98dcuf4mmjg"
 }
 
+imageserver {
+    pollingEnabled = true
+}
 
 String environmentConfig = ""
 
