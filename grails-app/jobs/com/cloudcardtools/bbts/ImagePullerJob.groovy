@@ -2,6 +2,7 @@ package com.cloudcardtools.bbts
 
 class ImagePullerJob {
 
+    CloudCardImageServerService cloudCardImageServerService
     CustomerPhotoService customerPhotoService
     CloudCardAPIService cloudCardAPIService
 
@@ -10,6 +11,10 @@ class ImagePullerJob {
     }
 
     def execute() {
+        if (!cloudCardImageServerService.pollingEnabled) {
+            return
+        }
+
         cloudCardAPIService.fetchPhotosReadyForDownload().each { photo ->
             try {
                 log.info "Downloading Photo $photo.id from $cloudCardAPIService.description"
