@@ -30,7 +30,8 @@ class Customer {
 
     static mapping = {
         datasource 'bbts'
-        table name: 'v_cust_id_custnum', schema: 'envision'
+        //Mercer does not have the view we use normally, so we just hit the customer table directly.
+        table name: 'customer', schema: 'envision'
         id name: 'custId', generator: 'assigned'
         version false
     }
