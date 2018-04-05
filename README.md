@@ -13,8 +13,8 @@ CloudCard Image Server is a Grails web application, which runs on the Java Virtu
 - Grails Version 2.4.4
 - Tomcat 7
 - Git
-- JVM Heap 1GB
-- JVM PermGen 256MB
+- JVM Heap 256MB
+- JVM PermGen 128MB
 
 ##### System Setup
 1. Make sure Java is installed and accessible via the command line. You can do this by typing `java -version`. If you get an error, [install Java](http://docs.oracle.com/javase/7/docs/webnotes/install/).
